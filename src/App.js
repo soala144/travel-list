@@ -1,12 +1,13 @@
-import logo from "./logo.svg";
-import "./App.css";
+export default function App() {}
 
-function App() {
-  return (
-    <div className="App">
-      <h1>Soala</h1>
-    </div>
-  );
-}
+// Logo Component
+function Logo() {}
 
-export default App;
+// Logo Form
+function Form() {}
+
+// Logo PackingList
+function PackingList() {}
+
+// Logo Stats
+function Stats() {}
