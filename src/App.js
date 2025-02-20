@@ -1,16 +1,22 @@
 import { useState } from "react";
 
-const initialItems = [
-  { id: 1, description: "Passports", quantity: 2, packed: false },
-  { id: 2, description: "Socks", quantity: 12, packed: false },
-  { id: 2, description: "Car", quantity: 1, packed: true },
-];
+// const initialItems = [
+//   { id: 1, description: "Passports", quantity: 2, packed: false },
+//   { id: 2, description: "Socks", quantity: 12, packed: false },
+//   { id: 2, description: "Car", quantity: 1, packed: true },
+// ];
 export default function App() {
+  const [items, setItems] = useState([]);
+
+  function handleAdd(item) {
+    // Getting Previous items and adding new one
+    setItems((items) => [...items, item]);
+  }
   return (
     <div className="app">
       <Logo />
-      <Form />
-      <PackingList />
+      <Form onAddItems={handleAdd} />
+      <PackingList item={items} />
       <Stats />
     </div>
   );
@@ -23,9 +29,10 @@ function Logo() {
 }
 
 // Logo Form
-function Form() {
+function Form({ onAddItems }) {
   const [description, setDescription] = useState("");
-  const [quantity, setQuantity] = useState(5);
+  const [quantity, setQuantity] = useState(1);
+
   function handleSubmit(e) {
     e.preventDefault();
 
@@ -33,7 +40,7 @@ function Form() {
 
     const newItem = { description, quantity, packed: false, id: Date.now() };
     console.log(newItem);
-
+    onAddItems(newItem);
     setDescription("");
     setQuantity(1);
   }
@@ -44,6 +51,7 @@ function Form() {
         value={quantity}
         onChange={(e) => setQuantity(Number(e.target.value))}
       >
+        {/* Get an array of numbers from 1 to 20 */}
         {Array.from({ length: 20 }, (_, i) => i + 1).map((num) => (
           <option value={num} index={num}>
             {num}
@@ -62,11 +70,11 @@ function Form() {
 }
 
 // Logo PackingList
-function PackingList() {
+function PackingList({ item }) {
   return (
     <div className="list">
       <ul>
-        {initialItems.map((item) => (
+        {item.map((item) => (
           <Item item={item} key={item.id} />
         ))}
       </ul>
