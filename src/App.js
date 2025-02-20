@@ -100,6 +100,7 @@ function Stats() {
 function Item({ item, onDeleteItem }) {
   return (
     <li>
+      <input type="checkbox" />
       {/* Display of the mapped text */}
       <span style={item.packed ? { textDecoration: "line-through" } : {}}>
         {item.quantity} {item.description}
