@@ -15,6 +15,7 @@ export default function App() {
     </div>
   );
 }
+// Compononents
 
 // Logo Component
 function Logo() {
@@ -87,6 +88,7 @@ function Stats() {
 function Item({ item }) {
   return (
     <li>
+      {/* Display of the mapped text */}
       <span style={item.packed ? { textDecoration: "line-through" } : {}}>
         {item.quantity} {item.description}
       </span>
