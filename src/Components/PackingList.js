@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
-import Item from "./Components/Items";
+import Item from "./Item";
+
 function PackingList({
   items,
   onDeleteItem,
