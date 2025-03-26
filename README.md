@@ -1,4 +1,4 @@
-A project showing my skills on vasic react.
+A project showing my skills on basic react.
 
 Applied useState hook and some functions.
 
